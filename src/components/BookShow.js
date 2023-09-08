@@ -12,7 +12,7 @@ const BookShow = ({ book, onDelete, onEdit }) => {
   return (
     <div className="book-show">
       {showEdit ? (
-        <BookEdit book={book} onEdit={onEdit} onSubmit={handleSubmit} />
+        <BookEdit book={book} onSubmit={handleSubmit} />
       ) : (
         <h3>{book.title}</h3>
       )}
