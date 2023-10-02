@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 
 const App = () => {
   const [books, setBooks] = useState([]);
+
+  const fetchBooks = async () => {
+    const response = await axios.get("http://localhost:6764/books");
+
+    setBooks(response.data);
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
   const deleteBookById = (id) => {
     const updatedBooks = books.filter((book) => book.id !== id);
